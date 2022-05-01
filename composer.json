@@ -1,0 +1,19 @@
+{
+    "name": "hexlet/code",
+    "description": "This is Hexlet's second educational project. Task: write an application that can compare two files and find differences between them. The files can be in json or yaml formats.",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Hexlet\\Code\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Grishin",
+            "email": "grishinma2009@yandex.ru"
+        }
+    ],
+    "require": {
+        "docopt/docopt": "^1.0"
+    }
+}
