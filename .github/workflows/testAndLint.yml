@@ -21,12 +21,12 @@ jobs:
 
         - name: run test
           run:  make test
-          
+
         - name: publish code coverage
           uses: paambaati/codeclimate-action@v2.6.0
         # Add Code Climate secret key
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.TESTREPORTER_ID }}
+          TESTREPORTER_ID: ${{ secrets.TESTREPORTER_ID }}
         with:
           coverageCommand: make test-coverage
           coverageLocations: ${{github.workplace}}/build/logs/clover.xml:clover
