@@ -7,10 +7,11 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
-        - name: Run test & publish code coverage
-        - run:  make lint
-        - run:  make test
-        - uses: paambaati/codeclimate-action@v2.6.0
+        - name: Run test &linter 
+          run:  make lint
+          run:  make test
+        - name: publish code coverage
+          uses: paambaati/codeclimate-action@v2.6.0
         # Add Code Climate secret key
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.TESTREPORTER_ID }}
