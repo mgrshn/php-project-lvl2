@@ -8,6 +8,8 @@ jobs:
       steps:
         - uses: actions/checkout@v2
 
-        - name: Run test & linter 
+        - name: Run lint
           run:  make lint
+
+        - name: run test
           run:  make test
