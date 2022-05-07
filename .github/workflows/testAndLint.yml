@@ -1,4 +1,4 @@
-name: testAndLinter
+name: testAndLint
 
 on: push
   jobs:
@@ -13,7 +13,7 @@ on: push
         - uses: paambaati/codeclimate-action@v2.6.0
         # Add Code Climate secret key
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          CC_TEST_REPORTER_ID: ${{ secrets.TESTREPORTER_ID }}
         with:
           coverageCommand: make test-coverage
           coverageLocations: ${{github.workplace}}/build/logs/clover.xml:clover
