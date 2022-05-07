@@ -4,11 +4,11 @@ namespace Differ\Differ;
 
 function genDiff($pathToFile1, $pathToFile2): string
 {
-    if(!file_exists($pathToFile1)) {
-        $pathToFile1 = __DIR__ . "/../fixtures/{$pathToFile1}";
+    if (!file_exists($pathToFile1)) {
+        $pathToFile1 = __DIR__ . "/../tests/fixtures/{$pathToFile1}";
     }
-    if(!file_exists($pathToFile2)) {
-        $pathToFile2 = __DIR__ . "/../fixtures/{$pathToFile2}";
+    if (!file_exists($pathToFile2)) {
+        $pathToFile2 = __DIR__ . "/../tests/fixtures/{$pathToFile2}";
     }
     $firstFileAsArray = json_decode(file_get_contents($pathToFile1), true);
     $secondFileAsArray = json_decode(file_get_contents($pathToFile2), true);
