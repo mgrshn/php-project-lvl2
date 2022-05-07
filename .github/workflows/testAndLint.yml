@@ -5,9 +5,8 @@ on: push
 jobs:
   build:
       runs-on: ubuntu-latest
-      steps: 
+      steps:
         - uses: actions/checkout@v2
-
         - name: Run test & publish code coverage
         - run:  make lint
         - run:  make test
