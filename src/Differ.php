@@ -2,16 +2,12 @@
 
 namespace Differ\Differ;
 
+use function Differ\Parser\parse;
+
 function genDiff($pathToFile1, $pathToFile2): string
 {
-    if (!file_exists($pathToFile1)) {
-        $pathToFile1 = __DIR__ . "/../tests/fixtures/{$pathToFile1}";
-    }
-    if (!file_exists($pathToFile2)) {
-        $pathToFile2 = __DIR__ . "/../tests/fixtures/{$pathToFile2}";
-    }
-    $firstFileAsArray = json_decode(file_get_contents($pathToFile1), true);
-    $secondFileAsArray = json_decode(file_get_contents($pathToFile2), true);
+    $firstFileAsArray = parse($pathToFile1);
+    $secondFileAsArray = parse($pathToFile2);
     $mergedArray = array_merge_recursive($firstFileAsArray, $secondFileAsArray);
     ksort($mergedArray);
     $resultArr = [];

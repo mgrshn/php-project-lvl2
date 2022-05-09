@@ -5,3 +5,6 @@
 
 ## Comparing 2 plane json files:
 [![asciicast](https://asciinema.org/a/WqJbPVioRizE6AakIPwkOb9pP.svg)](https://asciinema.org/a/WqJbPVioRizE6AakIPwkOb9pP)
+
+## Comparing 2 plane yaml files:
+[![asciicast](https://asciinema.org/a/f3cgoQCiyylm6yhjJefhDGeoY.svg)](https://asciinema.org/a/f3cgoQCiyylm6yhjJefhDGeoY)
