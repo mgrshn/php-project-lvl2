@@ -8,3 +8,6 @@
 
 ## Comparing 2 plane yaml files:
 [![asciicast](https://asciinema.org/a/f3cgoQCiyylm6yhjJefhDGeoY.svg)](https://asciinema.org/a/f3cgoQCiyylm6yhjJefhDGeoY)
+
+## Comparing 2 nested files:
+[![asciicast](https://asciinema.org/a/SQ0rAOtZ9gWi9z5fxWWMSIqVl.svg)](https://asciinema.org/a/SQ0rAOtZ9gWi9z5fxWWMSIqVl)
