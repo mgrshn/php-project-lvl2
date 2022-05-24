@@ -29,7 +29,16 @@ Options:
 DOC;
 
 $args = Docopt::handle($doc, ['version' => 'Generate diff 0.1']);
-print_r(genDiff($args->args['<firstFile>'], $args->args['<secondFile>']));
+
+if (!isset($args->args['--format'])) {
+    $format = 'stylish';
+} else {
+    $format = $args->args['--format'];
+}
+
+print_r(genDiff($args->args['<firstFile>'], $args->args['<secondFile>'], $format));
+
+
 
 
 

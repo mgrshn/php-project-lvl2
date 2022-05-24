@@ -15,7 +15,7 @@ class DifferTest extends TestCase
         $file2 = 'file2.json';
 
         $result= file_get_contents(__DIR__ . '/fixtures/diffs.txt');
-        $this->assertEquals($result, genDiff($file1, $file2));
+        $this->assertEquals($result, genDiff($file1, $file2, 'stylish'));
     }
 
     public function testYaml(): void
@@ -24,7 +24,7 @@ class DifferTest extends TestCase
         $file2 = 'file2.yml';
 
         $result= file_get_contents(__DIR__ . '/fixtures/diffs.txt');
-        $this->assertEquals($result, genDiff($file1, $file2));
+        $this->assertEquals($result, genDiff($file1, $file2, 'stylish'));
     }
 
     public function testNestedJson(): void
@@ -33,7 +33,7 @@ class DifferTest extends TestCase
         $file2 = 'nested2.json';
 
         $result = file_get_contents(__DIR__ . '/fixtures/nested.txt');
-        $this->assertEquals($result, genDiff($file1, $file2));
+        $this->assertEquals($result, genDiff($file1, $file2, 'stylish'));
     }
 
     public function testNestedYaml(): void
@@ -42,6 +42,6 @@ class DifferTest extends TestCase
         $file2 = 'nested2.yml';
 
         $result = file_get_contents(__DIR__ . '/fixtures/nested.txt');
-        $this->assertEquals($result, genDiff($file1, $file2));
+        $this->assertEquals($result, genDiff($file1, $file2, 'stylish'));
     }
 }

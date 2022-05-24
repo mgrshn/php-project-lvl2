@@ -2,12 +2,12 @@
 
 namespace Differ\formatter;
 
-function format(array $treeOfFiles): array
+function stylish(array $treeOfFiles): array
 {
     $res = [];
     foreach ($treeOfFiles as $file) {
         if ($file['status'] === 'nested') {
-            $res["{$file['name']}"] = format($file['child']);
+            $res["{$file['name']}"] = stylish($file['child']);
         } elseif ($file['status'] === 'not changed') {
             $res["{$file['name']}"] = $file['value'];
         } elseif ($file['status'] === 'added') {
