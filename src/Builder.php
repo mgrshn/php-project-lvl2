@@ -20,19 +20,19 @@ function build(object $firstFile, object $secondFile): array
             $files[$key] = [
                 'name' => $key,
                 'status' => 'not changed',
-                'value' => $secondFile->$key, true
+                'value' => $secondFile->$key
             ];
         } elseif (!property_exists($firstFile, $key)) {
             $files[$key] = [
                 'name' => $key,
                 'status' => 'added',
-                'value' => $secondFile->$key, true
+                'value' => $secondFile->$key
             ];
         } elseif (!property_exists($secondFile, $key)) {
             $files[$key] = [
                 'name' => $key,
                 'status' => 'removed',
-                'value' => $firstFile->$key, true
+                'value' => $firstFile->$key
             ];
         } elseif (
             property_exists($firstFile, $key) &&
@@ -43,8 +43,8 @@ function build(object $firstFile, object $secondFile): array
             $files[$key] = [
                 'name' => $key,
                 'status' => 'changed',
-                'newValue' => $secondFile->$key, true,
-                'oldValue' => $firstFile->$key, true
+                'newValue' => $secondFile->$key,
+                'oldValue' => $firstFile->$key
             ];
         } else {
             if (is_object($firstFile->$key) && is_object($secondFile->$key)) {
