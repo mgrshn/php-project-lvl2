@@ -44,4 +44,13 @@ class DifferTest extends TestCase
         $result = file_get_contents(__DIR__ . '/fixtures/nested.txt');
         $this->assertEquals($result, genDiff($file1, $file2, 'stylish'));
     }
+
+    public function testPlain(): void
+    {
+        $file1 = 'nested1.yml';
+        $file2 = 'nested2.yml';
+
+        $result = file_get_contents(__DIR__ . '/fixtures/plainRes.txt');
+        $this->assertEquals($result, genDiff($file1, $file2, 'plain'));
+    }
 }
