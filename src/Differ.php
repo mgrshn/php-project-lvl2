@@ -9,7 +9,7 @@ use function Differ\Formatters\Stylish\toString;
 use function Differ\Formatters\Plain\plain;
 use function Differ\Formatters\formatTree;
 
-function genDiff(string $pathToFile1, string $pathToFile2, string $format)
+function genDiff(string $pathToFile1, string $pathToFile2, string $format = 'stylish')
 {
     $firstFile = parse($pathToFile1);
     $secondFile = parse($pathToFile2);
