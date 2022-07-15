@@ -43,12 +43,10 @@ function plain(array $mergedTree, $accName = ''/*, $res = []*/)
             return plain($elem['child'], $accName, $res);
         } elseif ($elem['status'] !== 'nested') {
             $res[] = 'Property ' . $accName . $elem['name'] . ' was changed';
-            
         }
     }
     print_r($res);
     return $res;*/
-
     $lines = array_map(function ($elem) use ($accName) {
         $name = $elem['name'];
         if ($elem['status'] === 'nested') {
