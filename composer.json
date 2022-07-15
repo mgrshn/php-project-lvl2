@@ -10,7 +10,9 @@
             "src/Differ.php",
             "src/Parser.php",
             "src/Builder.php",
-            "src/Formatter.php"
+            "src/Formatters/Plain.php",
+            "src/Formatters/Stylish.php",
+            "src/Formatters.php"
         ]
     },
     "authors": [

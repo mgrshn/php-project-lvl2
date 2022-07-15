@@ -11,3 +11,6 @@
 
 ## Comparing 2 nested files:
 [![asciicast](https://asciinema.org/a/SQ0rAOtZ9gWi9z5fxWWMSIqVl.svg)](https://asciinema.org/a/SQ0rAOtZ9gWi9z5fxWWMSIqVl)
+
+## Comparing files in "Plain mode":
+[![asciicast](https://asciinema.org/a/FuUf4EXnUNOl37Ezs5hcoXNps.svg)](https://asciinema.org/a/FuUf4EXnUNOl37Ezs5hcoXNps)
