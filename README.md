@@ -14,3 +14,6 @@
 
 ## Comparing files in "Plain mode":
 [![asciicast](https://asciinema.org/a/FuUf4EXnUNOl37Ezs5hcoXNps.svg)](https://asciinema.org/a/FuUf4EXnUNOl37Ezs5hcoXNps)
+
+## Comparing files in "Json mode":
+[![asciicast](https://asciinema.org/a/iTnatPKo3fKms8h3W7CnLZDYI.svg)](https://asciinema.org/a/iTnatPKo3fKms8h3W7CnLZDYI)
