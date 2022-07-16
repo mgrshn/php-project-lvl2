@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters\Plain;
 
-function plain(array $mergedTree, $accName = ''): string
+function plain(array $mergedTree, string $accName = ''): string
 {
     $lines = array_map(function ($elem) use ($accName) {
         $name = $elem['name'];
@@ -20,7 +20,7 @@ function plain(array $mergedTree, $accName = ''): string
             $newVal = is_object($elem['newValue']) ? '[complex value]' : var_export($elem['newValue'], true);
             $newVal = $newVal === 'NULL' ? 'null' : $newVal;
             return "Property '{$accName}{$elem['name']}' was updated. From {$oldVal} to {$newVal}";
-        } elseif ($elem['status'] === 'removed') {
+        } elseif ((string) $elem['status'] === 'removed') {
             return "Property '{$accName}{$elem['name']}' was removed";
         };
     }, $mergedTree);
