@@ -14,6 +14,7 @@ function genDiff(string $pathToFile1, string $pathToFile2, string $format = 'sty
     $firstFile = parse($pathToFile1);
     $secondFile = parse($pathToFile2);
     $files = build($firstFile, $secondFile);
+    //print_r($files);
 
     return formatTree($format, $files);
 }
