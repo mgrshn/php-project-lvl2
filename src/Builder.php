@@ -15,7 +15,7 @@ function build(object $firstFile, object $secondFile): array
         if (
             property_exists($firstFile, $key) &&
             property_exists($secondFile, $key) &&
-            $secondFile->$key === $firstFile->$key //here. Changed non-stricted comparision to a strict one.
+            $secondFile->$key === $firstFile->$key //here. Changed non-stricted comparision to a strict one. It Works!
         ) {
             $files[$key] = [
                 'name' => $key,
@@ -37,7 +37,7 @@ function build(object $firstFile, object $secondFile): array
         } elseif (
             property_exists($firstFile, $key) &&
             property_exists($secondFile, $key) &&
-            $secondFile->$key != $firstFile->$key &&
+            $secondFile->$key !== $firstFile->$key && //here. Changed non-stricted comparision to a strict one.
             !(is_object($firstFile->$key)) || !(is_object($secondFile->$key))
         ) {
             $files[$key] = [
