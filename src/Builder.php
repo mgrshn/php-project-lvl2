@@ -14,6 +14,7 @@ function build(object $firstFile, object $secondFile): array
     $keys = sortBy($keys, function ($elem) {
         return $elem;
     });
+    //print_r($keys);
 
     //$files = [];
     /*foreach ($keys as $key) {
