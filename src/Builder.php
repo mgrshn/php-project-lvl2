@@ -13,7 +13,7 @@ function build(object $firstFile, object $secondFile): array
 
     $keys = sortBy($keys, function ($elem) {
         return $elem;
-    }, 'asort');
+    });
 
     //$files = [];
     /*foreach ($keys as $key) {
