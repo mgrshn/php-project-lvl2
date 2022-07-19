@@ -27,7 +27,8 @@
     ],
     "require": {
         "docopt/docopt": "^1.0",
-        "symfony/yaml": "^5.4"
+        "symfony/yaml": "^5.4",
+        "funct/funct": "^1.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",

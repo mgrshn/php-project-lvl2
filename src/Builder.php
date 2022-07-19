@@ -2,16 +2,20 @@
 
 namespace Differ\Builder;
 
+use function Funct\Collection\sortBy;
+
 function build(object $firstFile, object $secondFile): array
 {
     $keys = array_unique(array_merge(
         array_keys(get_object_vars($firstFile)),
         array_keys(get_object_vars($secondFile))
     ));
-    //print_r($keys);
-    sort($keys);
 
-    $files = [];
+    $keys = sortBy($keys, function ($elem) {
+        return $elem;
+    }, 'asort');
+
+    //$files = [];
     /*foreach ($keys as $key) {
         if (
             property_exists($firstFile, $key) &&
