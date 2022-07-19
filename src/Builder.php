@@ -2,18 +2,22 @@
 
 namespace Differ\Builder;
 
-use function Funct\Collection\sortBy;
+use function Tightenco\Collect\Support\sort;
 
 function build(object $firstFile, object $secondFile): array
 {
-    $keys = array_unique(array_merge(
+    $keys = collect(array_unique(array_merge(
         array_keys(get_object_vars($firstFile)),
         array_keys(get_object_vars($secondFile))
-    ));
+    )))->sort()->toArray();
 
-    $keys = array_values(sortBy($keys, function ($elem) {
+    /*$keys->sort()->toArray();
+    print_r($keys);*/
+
+    /*$keys = array_values(sortBy($keys, function ($elem) {
         return $elem;
-    }));
+    }));*/
+    //sort($keys);
     //print_r($keys);
 
     //$files = [];
