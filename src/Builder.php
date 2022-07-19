@@ -2,17 +2,19 @@
 
 namespace Differ\Builder;
 
-use function Tightenco\Collect\Support\sort;
+//use function Tightenco\Collect\Support\sort;
 
 function build(object $firstFile, object $secondFile): array
 {
-    $keys = collect(array_unique(array_merge(
+    $keys = customSort(array_unique(array_merge(
         array_keys(get_object_vars($firstFile)),
-        array_keys(get_object_vars($secondFile))
-    )))->sort()->toArray();
+        array_keys(get_object_vars($secondFile)))
+    ));
+
+    //$keys = customSort($keys);
 
     /*$keys->sort()->toArray();
-    print_r($keys);*/
+    print_r($keys);
 
     /*$keys = array_values(sortBy($keys, function ($elem) {
         return $elem;
@@ -115,4 +117,10 @@ function build(object $firstFile, object $secondFile): array
     //print_r($tree);
     //print_r($files);
     return $tree;
+}
+
+function customSort(array $keys)
+{
+    sort($keys);
+    return $keys;
 }
