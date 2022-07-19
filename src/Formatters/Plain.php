@@ -16,10 +16,10 @@ function plain(array $mergedTree, string $accName = ''): string
             return "Property '{$accName}{$elem['name']}' was removed";
         } elseif ($elem['status'] === 'changed') {
             $oldVal = is_object($elem['oldValue']) ? '[complex value]' : var_export($elem['oldValue'], true);
-            $oldVal = $oldVal === 'NULL' ? 'null' : $oldVal;
+            $oldValRes = $oldVal === 'NULL' ? 'null' : $oldVal;
             $newVal = is_object($elem['newValue']) ? '[complex value]' : var_export($elem['newValue'], true);
-            $newVal = $newVal === 'NULL' ? 'null' : $newVal;
-            return "Property '{$accName}{$elem['name']}' was updated. From {$oldVal} to {$newVal}";
+            $newValRes = $newVal === 'NULL' ? 'null' : $newVal;
+            return "Property '{$accName}{$elem['name']}' was updated. From {$oldValRes} to {$newValRes}";
         } elseif ((string) $elem['status'] === 'removed') {
             return "Property '{$accName}{$elem['name']}' was removed";
         };
