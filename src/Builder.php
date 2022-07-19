@@ -6,14 +6,16 @@ use Functional;
 
 function build(object $firstFile, object $secondFile): array
 {
-    $keys = array_unique(array_merge(
+    $keys = Functional\sort(array_unique(array_merge(
         array_keys(get_object_vars($firstFile)),
         array_keys(get_object_vars($secondFile))
-    ));
-
-    $keys = Functional\sort($keys, function ($key, $key2) {
+    )), function ($key, $key2) {
         return $key <=> $key2;
     });
+
+    /*$keys = Functional\sort($keys, function ($key, $key2) {
+        return $key <=> $key2;
+    });*/
     /*$keys->sort()->toArray();
     print_r($keys);
 
