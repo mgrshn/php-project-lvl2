@@ -2,8 +2,6 @@
 
 namespace Differ\Builder;
 
-//use function Tightenco\Collect\Support\sort;
-
 function build(object $firstFile, object $secondFile): array
 {
     $keys = customSort(array_unique(array_merge(
