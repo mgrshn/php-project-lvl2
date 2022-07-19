@@ -2,14 +2,18 @@
 
 namespace Differ\Builder;
 
+use function Functional\sort;
+
 function build(object $firstFile, object $secondFile): array
 {
-    $keys = customSort(array_unique(array_merge(
+    $keys = array_unique(array_merge(
         array_keys(get_object_vars($firstFile)),
         array_keys(get_object_vars($secondFile))
-    )));
-    //$keys = customSort($keys);
+    ));
 
+    $keys = sort($keys, function ($key, $key2) {
+        return $key <=> $key2;
+    });
     /*$keys->sort()->toArray();
     print_r($keys);
 
@@ -114,10 +118,4 @@ function build(object $firstFile, object $secondFile): array
     //print_r($tree);
     //print_r($files);
     return $tree;
-}
-
-function customSort(array $keys)
-{
-    sort($keys);
-    return $keys;
 }
