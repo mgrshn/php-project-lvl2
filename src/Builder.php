@@ -8,9 +8,8 @@ function build(object $firstFile, object $secondFile): array
 {
     $keys = customSort(array_unique(array_merge(
         array_keys(get_object_vars($firstFile)),
-        array_keys(get_object_vars($secondFile)))
-    ));
-
+        array_keys(get_object_vars($secondFile))
+    )));
     //$keys = customSort($keys);
 
     /*$keys->sort()->toArray();
