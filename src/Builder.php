@@ -11,9 +11,9 @@ function build(object $firstFile, object $secondFile): array
         array_keys(get_object_vars($secondFile))
     ));
 
-    $keys = sortBy($keys, function ($elem) {
+    $keys = array_values(sortBy($keys, function ($elem) {
         return $elem;
-    });
+    }));
     //print_r($keys);
 
     //$files = [];
