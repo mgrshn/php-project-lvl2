@@ -2,7 +2,7 @@
 
 namespace Differ\Builder;
 
-use function Functional\sort;
+use Functional;
 
 function build(object $firstFile, object $secondFile): array
 {
@@ -11,7 +11,7 @@ function build(object $firstFile, object $secondFile): array
         array_keys(get_object_vars($secondFile))
     ));
 
-    $keys = sort($keys, function ($key, $key2) {
+    $keys = Functional\sort($keys, function ($key, $key2) {
         return $key <=> $key2;
     });
     /*$keys->sort()->toArray();
