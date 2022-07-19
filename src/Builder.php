@@ -8,7 +8,7 @@ function build(object $firstFile, object $secondFile): array
         array_keys(get_object_vars($firstFile)),
         array_keys(get_object_vars($secondFile))
     ));
-    print_r($keys);
+    //print_r($keys);
     sort($keys);
 
     $files = [];
