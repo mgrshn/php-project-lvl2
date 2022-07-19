@@ -64,19 +64,19 @@ function build(object $firstFile, object $secondFile): array
             property_exists($secondFile, $key) &&
             $secondFile->$key === $firstFile->$key //here. Changed non-stricted comparision to a strict one. It Works!
         ) {
-            return $tree[$key] = [
+            return [
                 'name' => $key,
                 'status' => 'not changed',
                 'value' => $secondFile->$key
             ];
         } elseif (!property_exists($firstFile, $key)) {
-            return $tree[$key] = [
+            return [
                 'name' => $key,
                 'status' => 'added',
                 'value' => $secondFile->$key
             ];
         } elseif (!property_exists($secondFile, $key)) {
-            return $tree[$key] = [
+            return [
                 'name' => $key,
                 'status' => 'removed',
                 'value' => $firstFile->$key
@@ -87,7 +87,7 @@ function build(object $firstFile, object $secondFile): array
             $secondFile->$key !== $firstFile->$key && //here. Changed non-stricted comparision to a strict one.
             !(is_object($firstFile->$key)) || !(is_object($secondFile->$key))
         ) {
-            return $tree[$key] = [
+            return [
                 'name' => $key,
                 'status' => 'changed',
                 'newValue' => $secondFile->$key,
@@ -95,7 +95,7 @@ function build(object $firstFile, object $secondFile): array
             ];
         } else {
             if (is_object($firstFile->$key) && is_object($secondFile->$key)) {
-                return $tree[$key] = [
+                return [
                     'name' => $key,
                     'status' => 'nested',
                     'child' => build($firstFile->$key, $secondFile->$key)
