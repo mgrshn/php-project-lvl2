@@ -30,7 +30,7 @@ function stylish(array $treeOfFiles): array
                 return $acc;
                 break;
         }
-        //return $acc; 
+        //return $acc;
     }, []);
     //print_r($res);
     return $res;
