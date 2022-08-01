@@ -10,24 +10,29 @@ function stylish(array $treeOfFiles): array
         switch ($node) {
             case $node['status'] === 'not changed':
                 $acc["{$node['name']}"] = $node["value"];
+                return $acc;
                 break;
             case $node['status'] === 'added':
                 $acc["+ {$node['name']}"] = $node["value"];
+                return $acc;
                 break;
             case $node['status'] === 'removed':
                 $acc["- {$node['name']}"] = $node["value"];
+                return $acc;
                 break;
             case $node['status'] === 'changed':
                 $acc["- {$node['name']}"] = $node["oldValue"];
                 $acc["+ {$node['name']}"] = $node["newValue"];
+                return $acc;
                 break;
             case $node['status'] === 'nested':
                 $acc["{$node['name']}"] = stylish($node['child']);
+                return $acc;
                 break;
         }
-        return $acc;
+        //return $acc; 
     }, []);
-
+    //print_r($res);
     return $res;
 }
 
