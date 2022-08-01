@@ -2,23 +2,32 @@
 
 namespace Differ\Formatters\Stylish;
 
+use Functional;
+
 function stylish(array $treeOfFiles): array
 {
-    $res = [];
-    foreach ($treeOfFiles as $file) {
-        if ($file['status'] === 'nested') {
-            $res["{$file['name']}"] = stylish($file['child']);
-        } elseif ($file['status'] === 'not changed') {
-            $res["{$file['name']}"] = $file['value'];
-        } elseif ($file['status'] === 'added') {
-            $res["+ {$file['name']}"] = $file['value'];
-        } elseif ($file['status'] === 'removed') {
-            $res["- {$file['name']}"] = $file['value'];
-        } else {
-            $res["- {$file['name']}"] = $file['oldValue'];
-            $res["+ {$file['name']}"] = $file['newValue'];
+    $res = array_reduce($treeOfFiles, function ($acc, $node) {
+        switch ($node) {
+            case $node['status'] === 'not changed':
+                $acc["{$node['name']}"] = $node["value"];
+                break;
+            case $node['status'] === 'added':
+                $acc["+ {$node['name']}"] = $node["value"];
+                break;
+            case $node['status'] === 'removed':
+                $acc["- {$node['name']}"] = $node["value"];
+                break;
+            case $node['status'] === 'changed':
+                $acc["- {$node['name']}"] = $node["oldValue"];
+                $acc["+ {$node['name']}"] = $node["newValue"];
+                break;
+            case $node['status'] === 'nested':
+                $acc["{$node['name']}"] = stylish($node['child']);
+                break;
         }
-    }
+        return $acc;
+    }, []);
+
     return $res;
 }
 

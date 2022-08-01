@@ -25,6 +25,6 @@ function plain(array $mergedTree, string $accName = ''): string
         };
     }, $mergedTree);
 
-    $lines = array_filter($lines, fn($line) => $line);//claer clean lines from $lines array with value not changed.
-    return implode("\n", $lines);
+    $linesRes = array_filter($lines, fn($line) => $line);//claer clean lines from $lines array with value not changed.
+    return implode("\n", $linesRes);
 }
