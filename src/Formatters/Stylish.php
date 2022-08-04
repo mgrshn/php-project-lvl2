@@ -6,7 +6,38 @@ use Functional;
 
 function stylish(array $treeOfFiles): array
 {
-    $res = array_reduce($treeOfFiles, function ($acc, $node) {
+    //print_r($treeOfFiles);
+
+    $arrayOfDifferences = array_map(function ($node) {
+        switch ($node) {
+            case $node['status'] === 'not changed':
+                return ["{$node['name']}" => $node["value"]];
+            case $node['status'] === 'added':
+                return ["+ {$node['name']}" => $node["value"]];
+            case $node['status'] === 'removed':
+                return ["- {$node['name']}" => $node["value"]];
+            case $node['status'] === 'changed':
+                return ["- {$node['name']}" => $node["oldValue"], "+ {$node['name']}" => $node["newValue"]];
+            case $node['status'] === 'nested':
+                return ["{$node['name']}" => stylish($node['child'])];
+        }
+    }, $treeOfFiles);
+
+
+    $keys = Functional\flat_map($arrayOfDifferences, function ($elem) {
+        return array_keys($elem);
+    });
+
+    $values = Functional\flat_map($arrayOfDifferences, function ($elem) {
+        return $elem;
+    });
+
+
+    $res = array_combine($keys, $values);
+    return $res;
+
+
+    /*$res = array_reduce($treeOfFiles, function ($acc, $node) {
         switch ($node) {
             case $node['status'] === 'not changed':
                 $acc["{$node['name']}"] = $node["value"];//Should not use of mutating operators
@@ -14,7 +45,7 @@ function stylish(array $treeOfFiles): array
             case $node['status'] === 'added':
                 $acc["+ {$node['name']}"] = $node["value"];//Should not use of mutating operators
                 break;
-            case $node['status'] === 'removed':
+            case $node['status'] === 'removed';
                 $acc["- {$node['name']}"] = $node["value"];//Should not use of mutating operators
                 break;
             case $node['status'] === 'changed':
@@ -25,18 +56,18 @@ function stylish(array $treeOfFiles): array
                 $acc["{$node['name']}"] = stylish($node['child']);//Should not use of mutating operators
                 break;
         }
-        //return $newAcc;
         return $acc;
-    });
+    }, []);
     //print_r($res);
-    return $res;
+    return $res;*/
 }
 
 function toString(array $formattedArray): string
 {
-    $result = str_replace('"', '', json_encode($formattedArray, JSON_PRETTY_PRINT));
-    $result = str_replace(",", "", $result);
-    $result = str_replace("  + ", "+ ", $result);
-    $result = str_replace("  - ", "- ", $result);
+    $formattedJson = json_encode($formattedArray, JSON_PRETTY_PRINT);
+    $unqoted = str_replace('"', '', $formattedJson);
+    $uncommas = str_replace(",", "", $unqoted);
+    $result = str_replace("  - ", "- ", str_replace("  + ", "+ ", $uncommas));
+    //$result = , $result);
     return $result;
 }
