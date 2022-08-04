@@ -9,29 +9,29 @@ function stylish(array $treeOfFiles): array
     $res = array_reduce($treeOfFiles, function ($accc, $node) {
         switch ($node) {
             case $node['status'] === 'not changed':
-                $accc["{$node['name']}"] = $node["value"];//Should not use of mutating operators
-                $acc = $accc;
+                $acc["{$node['name']}"] = $node["value"];//Should not use of mutating operators
+                $accc = array_merge($accc, $acc);
                 break;
             case $node['status'] === 'added':
-                $accc["+ {$node['name']}"] = $node["value"];//Should not use of mutating operators
-                $acc = $accc;
+                $acc["+ {$node['name']}"] = $node["value"];//Should not use of mutating operators
+                $accc = array_merge($accc, $acc);
                 break;
             case $node['status'] === 'removed':
-                $accc["- {$node['name']}"] = $node["value"];//Should not use of mutating operators
-                $acc = $accc;
+                $acc["- {$node['name']}"] = $node["value"];//Should not use of mutating operators
+                $accc = array_merge($accc, $acc);
                 break;
             case $node['status'] === 'changed':
-                $accc["- {$node['name']}"] = $node["oldValue"];//Should not use of mutating operators
-                $accc["+ {$node['name']}"] = $node["newValue"];//Should not use of mutating operators
-                $acc = $accc;
+                $acc["- {$node['name']}"] = $node["oldValue"];//Should not use of mutating operators
+                $acc["+ {$node['name']}"] = $node["newValue"];//Should not use of mutating operators
+                $accc = array_merge($accc, $acc);
                 break;
             case $node['status'] === 'nested':
-                $accc["{$node['name']}"] = stylish($node['child']);//Should not use of mutating operators
-                $acc = $accc;
+                $acc["{$node['name']}"] = stylish($node['child']);//Should not use of mutating operators
+                $accc = array_merge($accc, $acc);
                 break;
         }
         //return $newAcc;
-        return $acc;
+        return $accc;
     }, []);
     //print_r($res);
     return $res;
