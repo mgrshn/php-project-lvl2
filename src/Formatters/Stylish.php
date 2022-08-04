@@ -6,31 +6,32 @@ use Functional;
 
 function stylish(array $treeOfFiles): array
 {
-    $res = array_reduce($treeOfFiles, function ($acc, $node) {
+    $res = array_reduce($treeOfFiles, function ($accc, $node) {
         switch ($node) {
             case $node['status'] === 'not changed':
-                $acc["{$node['name']}"] = $node["value"];
-                return $acc;
+                $accc["{$node['name']}"] = $node["value"];//Should not use of mutating operators
+                $acc = $accc;
                 break;
             case $node['status'] === 'added':
-                $acc["+ {$node['name']}"] = $node["value"];
-                return $acc;
+                $accc["+ {$node['name']}"] = $node["value"];//Should not use of mutating operators
+                $acc = $accc;
                 break;
             case $node['status'] === 'removed':
-                $acc["- {$node['name']}"] = $node["value"];
-                return $acc;
+                $accc["- {$node['name']}"] = $node["value"];//Should not use of mutating operators
+                $acc = $accc;
                 break;
             case $node['status'] === 'changed':
-                $acc["- {$node['name']}"] = $node["oldValue"];
-                $acc["+ {$node['name']}"] = $node["newValue"];
-                return $acc;
+                $accc["- {$node['name']}"] = $node["oldValue"];//Should not use of mutating operators
+                $accc["+ {$node['name']}"] = $node["newValue"];//Should not use of mutating operators
+                $acc = $accc;
                 break;
             case $node['status'] === 'nested':
-                $acc["{$node['name']}"] = stylish($node['child']);
-                return $acc;
+                $accc["{$node['name']}"] = stylish($node['child']);//Should not use of mutating operators
+                $acc = $accc;
                 break;
         }
-        //return $acc;
+        //return $newAcc;
+        return $acc;
     }, []);
     //print_r($res);
     return $res;
