@@ -64,10 +64,9 @@ function stylish(array $treeOfFiles): array
 
 function toString(array $formattedArray): string
 {
-    $formattedJson = json_encode($formattedArray, JSON_PRETTY_PRINT);
+    $formattedJson = (string) json_encode($formattedArray, JSON_PRETTY_PRINT);
     $unqoted = str_replace('"', '', $formattedJson);
     $uncommas = str_replace(",", "", $unqoted);
     $result = str_replace("  - ", "- ", str_replace("  + ", "+ ", $uncommas));
-    //$result = , $result);
     return $result;
 }
