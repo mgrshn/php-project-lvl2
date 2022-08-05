@@ -7,8 +7,8 @@ function plain(array $mergedTree, string $accName = ''): string
     $lines = array_map(function ($elem) use ($accName) {
         $name = $elem['name'];
         if ($elem['status'] === 'nested') {
-            $accName .= $name . '.';
-            return plain($elem['child'], $accName);
+            //$accName .= $name . '.';
+            return plain($elem['child'], "{$accName}{$name}.");
         } elseif ($elem['status'] === 'added') {
             $value = is_object($elem['value']) ? '[complex value]' : var_export($elem['value'], true);
             return "Property '{$accName}{$elem['name']}' was added with value: {$value}";

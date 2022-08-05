@@ -12,7 +12,7 @@ function parse(string $pathToFile)
         $path = $pathToFile;
     }
     $pathInfo = pathinfo($path);
-    $extension = $pathInfo['extension'];
+    $extension = $pathInfo['extension'] ?? '';
     switch ($extension) {
         default:
             $parsedFile = 'Incorrect way!';
