@@ -7,17 +7,20 @@ use Symfony\Component\Yaml\Yaml;
 function parse(string $pathToFile)
 {
     if (!file_exists($pathToFile)) {
-        $pathToFile = __DIR__ . "/../tests/fixtures/{$pathToFile}";
+        $path = __DIR__ . "/../tests/fixtures/{$pathToFile}";
     }
-    $pathInfo = pathinfo($pathToFile);
+    $pathInfo = pathinfo($path);
     $extension = $pathInfo['extension'];
     switch ($extension) {
+        default:
+            $parsedFile = 'Incorrect way!';
+            break;
         case 'json':
-            $parsedFile = json_decode(file_get_contents($pathToFile));
+            $parsedFile = json_decode((string) file_get_contents($path));
             break;
         case 'yaml':
         case 'yml':
-            $parsedFile = Yaml::parse(file_get_contents($pathToFile), Yaml::PARSE_OBJECT_FOR_MAP);
+            $parsedFile = Yaml::parse((string) file_get_contents($path), Yaml::PARSE_OBJECT_FOR_MAP);
             break;
     }
     return $parsedFile;
